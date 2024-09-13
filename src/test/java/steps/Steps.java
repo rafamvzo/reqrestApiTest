@@ -19,8 +19,9 @@ public class Steps {
 		metodoapi.validaStatusCode(status);
 	}
 
-	@Then("valido o primeiro nome {string} e {string}")
-	public void validoOPrimeiroNomeE(String nome, String job) {
+	@Then("valido o contrato com nome {string} e {string} obrigatorio")
+	public void validoOContratoNomeEJob(String nome, String job) {
 		metodoapi.validaCamposObrigatorios(nome, job);
 	}
+
 }

@@ -1,8 +1,7 @@
 package metodos;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasKey;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 import io.restassured.http.ContentType;
@@ -21,8 +20,18 @@ public class GetNetApi {
 				.post("https://reqres.in/api/users")
 				.then()
 				.extract().response();
-
 		System.out.println("Usuário criado com sucesso: " + response.asString());
+	}
+	public void validaCamposObrigatorios(String nomeEsperado, String jobEsperado) {
+		this.response.then()
+				.body("name", equalTo(nomeEsperado))
+				.body("job", equalTo(jobEsperado))
+				.body("$", hasKey("id"))
+				.body("$", hasKey("createdAt"))
+				.body("id", notNullValue())
+				.body("createdAt", notNullValue())
+				.body("id", matchesPattern("\\d+"))
+				.body("createdAt", matchesPattern("\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z"));
 	}
 	public void validaStatusCode(int expectedStatusCode) {
 		this.response.then().statusCode(expectedStatusCode);
@@ -32,11 +41,4 @@ public class GetNetApi {
 		assertThat(bodyResponse, StringContains.containsString(texto));
 	}
 
-	public void validaCamposObrigatorios(String nomeEsperado, String jobEsperado) {
-		this.response.then()
-				.body("name", equalTo(nomeEsperado))
-				.body("job", equalTo(jobEsperado))
-				.body("$", hasKey("id"))
-				.body("$", hasKey("createdAt"));
-	}
 }

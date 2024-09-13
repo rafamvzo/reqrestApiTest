@@ -10,7 +10,7 @@ import io.cucumber.junit.CucumberOptions;
 
 		features = "src/test/resources/features",
 		glue = "steps",
-		tags = "@execucao",
+		tags = "@cenarioDadosValidos",
 		plugin = {"pretty","html:target/report.html"},
 		monochrome = true,
 		dryRun = false

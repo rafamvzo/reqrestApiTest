@@ -1,5 +1,5 @@
 @execucao
-Feature: Buscar Professional
+Feature: Criar POST Professional
 	Eu como usuario quero validar os dados obrigatorios enviados na criação do usuário
 
 	@cenarioDadosValidos

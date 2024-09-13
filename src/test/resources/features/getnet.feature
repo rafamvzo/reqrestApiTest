@@ -1,12 +1,12 @@
 @execucao
-Feature: Buscar Professional
+Feature: Criar POST Professional
 	Eu como usuario quero validar os dados obrigatorios enviados na criação do usuário
 
 	@cenarioDadosValidos
 	Scenario Outline: Validar criacao de usuario com todos os dados validos
 		Given enviar os dados obrigatorio "<nome>" e "<job>"
 		Then valido o status code <status>
-		Then valido o primeiro nome "<nome>" e "<job>"
+		Then valido o contrato com nome "<nome>" e "<job>" obrigatorio
 
 		Examples:
 			| nome       | job        | status |
@@ -16,7 +16,7 @@ Feature: Buscar Professional
 	Scenario Outline: Validar tentativa de criação de usuário enviando o campo nome em branco
 		Given enviar os dados obrigatorio "<nome>" e "<job>"
 		Then valido o status code <status>
-		Then valido o primeiro nome "<nome>" e "<job>"
+		Then valido o contrato com nome "<nome>" e "<job>" obrigatorio
 
 		Examples:
 			| nome | job       | status |
@@ -26,7 +26,7 @@ Feature: Buscar Professional
 	Scenario Outline: Validar tentativa de criação de usuário enviando o campo nome em invalido
 		Given enviar os dados obrigatorio "<nome>" e "<job>"
 		Then valido o status code <status>
-		Then valido o primeiro nome "<nome>" e "<job>"
+		Then valido o contrato com nome "<nome>" e "<job>" obrigatorio
 
 		Examples:
 			| nome 	| job       | status |
@@ -36,7 +36,7 @@ Feature: Buscar Professional
 	Scenario Outline: Validar tentativa de criação de usuário enviando o campo job em branco
 		Given enviar os dados obrigatorio "<nome>" e "<job>"
 		Then valido o status code <status>
-		Then valido o primeiro nome "<nome>" e "<job>"
+		Then valido o contrato com nome "<nome>" e "<job>" obrigatorio
 
 		Examples:
 			| nome 			 | job        | status |
@@ -46,7 +46,7 @@ Feature: Buscar Professional
 	Scenario Outline: Validar tentativa de criação de usuário enviando o campo job invalido
 		Given enviar os dados obrigatorio "<nome>" e "<job>"
 		Then valido o status code <status>
-		Then valido o primeiro nome "<nome>" e "<job>"
+		Then valido o contrato com nome "<nome>" e "<job>" obrigatorio
 
 		Examples:
 			| nome 			 | job      		  | status |
